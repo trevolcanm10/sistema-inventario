@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/busqueda.css">
     <title>Document</title>
 </head>
 <body>
@@ -17,7 +18,7 @@
                 <header>
                     <div class="sombra">
                         <div class="title">
-                            <h1>Busca el producto que quieres editar</h1>
+                            <h1>Información del producto</h1>
                         </div>
 
                         <div class="buscador">

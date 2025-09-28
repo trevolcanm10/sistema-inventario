@@ -1,14 +1,14 @@
 <?php
 require('../models/conection.php');
 
-
-$id = $_POST['id'];
+$id = (int)$_POST['id'];
 $Nombre = $_POST['Nombre'];
 $Descripcion = $_POST['Descripcion'];
-$Precio = $_POST['Precio'];
+$Precio = (int)$_POST['Precio'];
 
 
 $con = new Conection();
 
 $productos = $con->UpdateProduct($id,$Nombre,$Descripcion,$Precio);
-header("Location:../index.php");
+
+header("Location:../Views/adminV.php");

@@ -10,7 +10,7 @@
     <div class="contenedor">
         <div class="subcontenedor">
             <nav class="menu">
-                <h2 class="academy">Academy</h2>
+                <h2 class="academy">Inventario</h2>
             </nav>
             <header>
                 <div class="sombra1">
@@ -33,7 +33,7 @@
                 </div>
                 <div class="banner">
                     <div class="sombra2">
-                        <h2 class="alucivo">Aprende con la mejor academia de cursos</h2>
+                        <h2 class="alucivo">Consulte los productos</h2>
                     </div>
                 </div>
         </div>

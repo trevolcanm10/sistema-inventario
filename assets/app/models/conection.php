@@ -12,20 +12,43 @@ class Conection{
 
     //Gestion de usuarios
     public function loginUser($email,$password){
-        $validacion = $this->conect->query("SELECT * FROM usuarios WHERE email = '$email' AND password = '$password'");
+        $validacion = $this->conect->prepare("SELECT * FROM usuarios WHERE email = ? ");
+        $validacion->bind_param("s",$email);
+        $validacion->execute();
+        $resultado = $validacion->get_result();
 
-        if($validacion->num_rows !=1){
+
+        if($resultado->num_rows !=1){
             return false; //Usuario o contraseña incorrectos
-        }else{
-            return $validacion->fetch_assoc();
         }
+        $user = $resultado->fetch_assoc();
+
+        if(password_verify($password,$user['password'])){
+            return $user;
+        }else{
+            return false;
+        }
+
     }
 
     //Registro de Usuarios
     public function registerUser($full_name,$email,$password,$role='user'){
-        $registro = "INSERT INTO usuarios(full_name,email,password,role) VALUES ('$full_name','$email','$password','$role')";
-        return $this->conect->query($registro);
+        //Hasheamos la contraseña
+        $passwordHash = password_hash($password,PASSWORD_DEFAULT);
+        $registro = $this->conect->prepare("INSERT INTO usuarios(full_name,email,password,role) VALUES (?,?,?,?)");
+
+        if(!$registro){
+            echo "Error en prepare:". $this->conect->error;
+            return false;
+        }
+
+        $registro->bind_param("ssss",$full_name,$email,$passwordHash,$role);
+        $resultado = $registro->execute();
+        $registro->close();
+        return $resultado;
+
     }
+
     //Obtención de los productos generales
     public function getProducts(){
         //Peticion de los datos en la base de datos
@@ -46,39 +69,71 @@ class Conection{
     public function Product($Nombre){
         //Consulta a la base de datos con la coincidencia del nombre
         //Si coincide el nombre me regresará todo el contenido
-        $peticion = $this->conect->query("SELECT * FROM productos WHERE Nombre = '$Nombre'");
-        $datos=[];
-        $i=0;
-        
-        //Recorremos todos los datos y los guardamos en un arreglo seguro
-        while($fila = $peticion->fetch_assoc()){
-            $datos[$i] = $fila;
-            $i++;
+        $peticion = $this->conect->prepare("SELECT * FROM productos WHERE Nombre = ?");
+
+        if(!$peticion){
+            echo "Error en prepare: " . $this->conect->error;
+            return [];
         }
+
+        $peticion->bind_param("s",$Nombre);
+        $peticion->execute();
+
+        $resultado = $peticion->get_result();
+        $datos=[];
+
+        //Recorremos todos los datos y los guardamos en un arreglo seguro
+        while($fila = $resultado->fetch_assoc()){
+            $datos[] = $fila;
+        }
+
+        $peticion->close();
         return $datos;
     }
 
     public function EditProduct($id){
         //Se realiza la peticion a la base de datos
         //Comparacion del id_producos, si encuentra el id entonces regresará el registro obtenido
-        $peticion = $this->conect->query("SELECT * FROM productos WHERE id_productos = '$id'");
-        $datos=[];
-        $i=0;
-
-        while($fila = $peticion->fetch_assoc()){
-            $datos[$i] = $fila;
-            $i++;
+        $peticion = $this->conect->prepare("SELECT * FROM productos WHERE id_productos = ? ");
+        if(!$peticion){
+            echo "Error en prepare:" . $this->conect->error;
+            return null;
         }
-        return $datos;
+
+        $peticion->bind_param("i",$id);
+        $peticion->execute();
+
+        $resultado = $peticion->get_result();
+        $producto = $resultado->fetch_assoc();
+        $peticion->close();
+        
+        return $producto;
     }
 
     //Funcion de actualizacion de datos
     public function UpdateProduct($id,$Nombre,$Descripcion,$Precio){
-        $peticion = $this->conect->query("UPDATE productos SET Nombre = '$Nombre', Descripcion='$Descripcion',Precio='$Precio' WHERE id_productos='$id'");
+        $peticion = $this->conect->prepare("UPDATE productos SET Nombre = ?, Descripcion=?,Precio=? WHERE id_productos=? ");
+
+        if(!$peticion){
+        echo "Error en prepare:" . $this->conect->error;
+        return false;
+        }
+
+        //Vinculacion de parámetros
+        $peticion->bind_param("ssii",$Nombre,$Descripcion,$Precio,$id);
+
+        //Ejecutar
+        $resultado = $peticion->execute();
+        if(!$resultado){
+            echo "Error en peticion: " . $peticion->error;
+        }
+        $peticion->close();
+        return $resultado;
     }
 
-    //Funcion insertar productos
+    
 
+    //Funcion insertar productos
     public function InsertProduct($Nombre,$Descripcion,$Precio){
         $peticion = $this->conect->query("INSERT INTO productos(Nombre,Descripcion,Precio)VALUES('$Nombre','$Descripcion','$Precio')");
     }

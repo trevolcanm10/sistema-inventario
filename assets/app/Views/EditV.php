@@ -30,17 +30,17 @@
                     </thead>
                     <tbody>
                         <?php
-                        foreach($productos as $pro){
+                        $pro = $productos;{
                         ?>
                         <form action="../controller/C_Update.php" method="post">
                             <tr>
-                                <td><input class="datos" type="hidden" value="<?php echo $pro['id_productos']?>" name="id"></td>
+                                <td><input class="datos" type="hidden" name="id"value="<?php echo $pro['id_productos']?>" ></td>
                                 <td><input class="datos" type="text" value="<?php echo $pro['Nombre']?>" name="Nombre"></td>
                                 <td><textarea class="datos" value="<?php echo $pro['Descripcion']?>" name="Descripcion" cols="20" rows="5" ></textarea></td>
                                 <td><input class="datos" type="text" value="<?php echo $pro['Precio']?>" name="Precio"></td>
                                 <td class="datosU" ><button  class="actualizar">Actualizar producto</button></td>
+                                
                             </tr>
-
                         </form>
                         <?php }?>
                     </tbody>
