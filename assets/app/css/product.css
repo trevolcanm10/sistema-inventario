@@ -1,0 +1,83 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.cont{
+    width: 100%;
+    height: 100vh;
+}
+
+
+.subcont{
+    width: 100%;
+    height: 100%;
+}
+
+
+nav{
+    width: 100%;
+    height: 70px;
+    background-color: black;
+}
+
+ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+li{
+    margin-left: 30px;
+    padding-top: 20px;
+    font-size: 18px;
+    list-style: none;
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 45px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.table{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+table{
+    margin-left: 10%;
+    margin-top: 15%;
+    width: 80%;
+    height: auto;
+    border-collapse: collapse;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px beige;
+}
+
+td{
+    border-right: 2px solid rgb(128,128,128,0.2);
+    border-bottom: 2px solid rgb(128,128,128,0.2);
+    text-align: center;
+    height: 40px;
+}
+
+.title{
+    font-weight: bold;
+}
+
+.edit, .delete{
+    color: black;
+    width: 5%;
+    
+}
+
+.cont-edit,.cont-delete{
+    background-color: brown;
+}

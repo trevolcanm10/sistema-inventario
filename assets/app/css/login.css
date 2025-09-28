@@ -1,0 +1,122 @@
+*{
+    margin: 0px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.contenedorP{
+    width: 100%;
+    height: 945px;
+}
+
+
+.contS{
+    width: 100%;
+    height: 945px;
+    display: grid;
+    grid-template-areas: 'texto login' 'footer  footer';
+    grid-template-rows: 900px auto;
+    grid-template-columns: 60%;
+}
+
+.cont_iz{
+    grid-area: texto;
+    padding: 20px;
+    background-image: url('https://syrelosoftware.com/wp-content/uploads/2021/09/Ilustracion-Modulo-Bodega.svg');
+    background-position: center 85%;
+    background-repeat: no-repeat;
+    margin-bottom: 0px;
+    grid-gap: 0px;
+}
+
+.cont_de{
+    grid-area: login;
+}
+
+h1{
+    font-size: 50px;
+    margin:20px;
+    margin-top: 20%;
+}
+
+.subtitle{
+    margin: 20px;
+    margin-left: 40px;
+    font-size: 30px;
+}
+
+.cont_sub{
+    border-radius: 10px;
+    width: 80%;
+    margin-top:15%;
+    height: 80%;
+    box-shadow: 8px 8px 4px 5px;
+}
+
+
+form{
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    align-items: center;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logotipo{
+    margin-top: 50px;
+}
+
+.logo{
+    margin-top: 20px;
+    font-size: 50px;
+}
+
+.email{
+    margin-top: 15%;
+    height: 60px;
+    width: 80%;
+    padding: 5px;
+    background-color: rgb(127,127,127);
+    border:none;
+    border-radius: 9px;
+    color:black;
+    font-weight: bold;
+}
+
+
+.password{
+    margin-top: 10%;
+    height: 60px;
+    width: 80%;
+    padding: 5px;
+    background-color: #F05322;
+    color: black;
+    border: none;
+    border-radius: 9px;
+    font-weight: bold;
+    outline: none;
+}
+
+
+.Ingresar{
+    margin-top: 15%;
+    height: 50px;
+    width: 30%;
+    background-color: #F05322;
+    border: none;
+    border-radius: 10px;
+    font-weight: bolder;
+}
+
+footer{
+    margin-left: 40%;
+}
+
+.final{
+    margin-left: 40%;
+}
+input:hover{
+    background-color: #F05322;
+    color: black;
+}

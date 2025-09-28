@@ -1,0 +1,162 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.contenedor{
+    width: 100%;
+    height: 100%;
+}
+
+.subcontenedor{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+    'nav nav' 
+    'port port' 
+    'form aluciv';
+    grid-template-rows:auto auto;
+}
+
+.sombra1{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+}
+
+nav{
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    grid-area: nav;
+}
+
+.academy{
+    color:white;
+    margin-left: 20px;
+    font-size: 40px;
+}
+
+header{
+    width: 100%;
+    height: 600px;
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/002/393/570/small/black-modern-material-header-with-diagonal-silver-lines-banner-for-your-business-abstract-widescreen-background-vector.jpg');
+    grid-area: port;
+    background-attachment: fixed;
+}
+
+h1{
+    margin-top: 10%;
+    margin-left: 20%;
+    margin-right: 10%;
+    font-size: 50px;
+    color:white;
+    text-shadow: 2px 2px 1px red;
+}
+
+.sublogo{
+    margin: 5%;
+    margin-left: 45%;
+    margin-top: 10px;
+    font-size: 25px;
+    color: white;
+    text-shadow: 2px 2px 1px red;
+}
+
+.formulario{
+    grid-area: form;
+    width: 100%;
+    display: flex;
+    background-color: rgb(239,94,41);
+    height: 500px;
+}
+
+form{
+    width: 100%;
+}
+
+.titulo_formulario{
+    width: 100%;
+    height: 50px;
+    font-size: 50px;
+    padding: 20px;
+}
+
+.P_Nombre{
+    margin: 20px;
+    margin-left: 10px;
+    width: 45%;
+    height: 10%;
+    padding-left: 10px;
+}
+
+.P_Apellido{
+    width: 45%;
+    height: 10%;
+    padding-left: 10px;
+}
+.email{
+    margin-left: 10px;
+    width: 94%;
+    padding-left: 10px;
+    height: 10%;
+}
+
+.contra{
+    margin-left: 10px;
+    margin-top: 20px;
+    height: 10%;
+    width: 50%;
+    padding-left: 10px;
+}
+
+.finalizar{
+    margin-left: 50px;
+    margin-top: 20px;
+    width: 25%;
+    height: 15%;
+    border-radius: 2px;
+    border: none;
+    font-weight: bolder;
+}
+
+input{
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.banner{
+    grid-area: aluciv;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://media.istockphoto.com/id/2119624053/es/vector/dise%C3%B1o-de-fondo-de-curva-de-l%C3%ADnea-de-patr%C3%B3n-negro-abstracto-ilustraci%C3%B3n-vectorial.jpg?s=2048x2048&w=is&k=20&c=bp9UWMwuocUHcCYeek4OfoLBcM4-RVZSNbs_Q4KT2ZA=');
+    background-position: center ;
+    background-repeat: no-repeat;
+}
+
+.sombra2{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+}
+
+.alucivo{
+    margin-top: 20%;
+    margin-left: 2%;
+    font-size: 30px;
+    color: white;
+    font-family: cursive;
+}
+
+
+button:hover{
+    background-color: greenyellow;
+    border:1px solid black;
+    transition: linear;
+}
