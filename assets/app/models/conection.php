@@ -135,10 +135,52 @@ class Conection{
 
     //Funcion insertar productos
     public function InsertProduct($Nombre,$Descripcion,$Precio){
-        $peticion = $this->conect->query("INSERT INTO productos(Nombre,Descripcion,Precio)VALUES('$Nombre','$Descripcion','$Precio')");
+        $peticion = $this->conect->prepare("INSERT INTO productos(Nombre,Descripcion,Precio)VALUES(?,?,?)");
+
+        if(!$peticion){
+            echo "Error en prepare:" . $this->conect->error;
+            return false;
+        }
+
+        $peticion->bind_param("ssi",$Nombre,$Descripcion,$Precio);
+        $resultado = $peticion->execute();
+
+        if(!$resultado){
+            echo "Error al insertar producto:" . $peticion->error;
+        }else{
+            echo "Producto insertado correctamente";
+        }
+
+        $peticion->close();
+        return $resultado;
     }
 
     public function DeleteProduct($id){
-        $peticion = $this->conect->query("DELETE FROM productos WHERE id_productos ='$id'");
+        $peticion = $this->conect->prepare("DELETE FROM productos WHERE id_productos =?");
+
+        if(!$peticion){
+        echo "Error en prepare:" . $this->conect->error;
+        return false;
+    }
+
+    $peticion->bind_param("i",$id);
+
+    $resultado = $peticion->execute();
+    if(!$resultado){
+        echo "Error al eliminar producto:" . $peticion->error;
+    }else{
+        if($peticion->affectd_rows>0){
+            echo "Producto eliminado correctamente";
+        }else{
+            echo "No se encontró el producto con ID: $id";
+        }
+
+    }
+
+    $peticion->close();
+
+    return $resultado;
     }
 }
+
+    
